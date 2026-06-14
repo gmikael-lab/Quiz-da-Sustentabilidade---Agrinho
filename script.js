@@ -17,6 +17,9 @@ const proximo = "passo-" + this.dataset.proximo;
 
 if (!document.getElementById(proximo)) return;
 
+// ==========================
+// RESPOSTA
+// ==========================
 if (this.classList.contains("resposta")) {
 
 if (bloqueado) return;
@@ -27,12 +30,11 @@ const resposta = this.innerText;
 const correta = this.dataset.correta === "true";
 const explicacaoAluno = this.dataset.explicacao;
 
-const botoes = document.querySelectorAll(".ativo .resposta");
-
 let respostaCorreta = "";
 let explicacaoCorreta = "";
 
-botoes.forEach(btn => {
+// pega resposta correta do bloco atual
+document.querySelectorAll(".ativo .resposta").forEach(btn => {
 if (btn.dataset.correta === "true") {
 respostaCorreta = btn.innerText;
 explicacaoCorreta = btn.dataset.explicacao;
@@ -53,17 +55,24 @@ if (correta) pontos++;
 setTimeout(() => bloqueado = false, 300);
 }
 
+// troca de passo
 atual.classList.remove("ativo");
 document.getElementById(proximo).classList.add("ativo");
 
 atualizarProgresso(proximo);
 
-if (proximo === "passo-11") mostrarResultado();
+// quando chega no resultado
+if (proximo === "passo-11") {
+mostrarResultado();
+}
 
 });
 
 });
 
+// ==========================
+// GABARITO BOTÃO
+// ==========================
 document.querySelector("#btn-gabarito").addEventListener("click", () => {
 
 const g = document.getElementById("gabarito");
@@ -78,24 +87,31 @@ g.style.display = "block";
 
 });
 
+// ==========================
+// PROGRESSO
+// ==========================
 function atualizarProgresso(id) {
 
 const n = parseInt(id.split("-")[1]);
 
-progresso.innerHTML = (n >= 1 && n <= 10)
+progresso.innerHTML =
+(n >= 1 && n <= 10)
 ? "Pergunta " + n + " de 10"
 : "";
 
 }
 
+// ==========================
+// EMBARALHAR ALTERNATIVAS
+// ==========================
 function embaralharAlternativas() {
 
 document.querySelectorAll(".alternativas").forEach(c => {
 
-const b = Array.from(c.children);
+let b = Array.from(c.children);
 
 for (let i = b.length - 1; i > 0; i--) {
-const j = Math.floor(Math.random() * (i + 1));
+let j = Math.floor(Math.random() * (i + 1));
 [b[i], b[j]] = [b[j], b[i]];
 }
 
@@ -105,17 +121,83 @@ b.forEach(x => c.appendChild(x));
 
 }
 
+// ==========================
+// RESULTADO + PERSONALIDADES
+// ==========================
 function mostrarResultado() {
 
 const r = document.getElementById("resultado");
 
-r.innerHTML = `
-<h3>Resultado</h3>
-<p>Você acertou ${pontos} de 10 perguntas.</p>
-`;
+let personalidade = "";
+let descricao = "";
+let dica = "";
+
+// 🪴 0-2
+if (pontos <= 2) {
+
+personalidade = "🪴 Despertando Ambientalmente";
+descricao = "Você está começando a entender como suas ações impactam o meio ambiente.";
+dica = "Comece com pequenas atitudes como economizar água e separar o lixo.";
 
 }
 
+// 🌿 3-4
+else if (pontos <= 4) {
+
+personalidade = "🌿 Aprendiz Sustentável";
+descricao = "Você já conhece algumas práticas sustentáveis, mas ainda pode evoluir.";
+dica = "Transforme o que você sabe em hábitos do dia a dia.";
+
+}
+
+// 🌳 5-6
+else if (pontos <= 6) {
+
+personalidade = "🌳 Guardião em Formação";
+descricao = "Você já tem uma boa consciência ambiental.";
+dica = "Incentive outras pessoas a praticarem sustentabilidade.";
+
+}
+
+// 🌎 7-8
+else if (pontos <= 8) {
+
+personalidade = "🌎 Protetor da Natureza";
+descricao = "Você tem um nível alto de consciência ambiental.";
+dica = "Busque ampliar ainda mais seu impacto positivo.";
+
+}
+
+// 🏆 9-10
+else {
+
+personalidade = "🏆 Mestre da Sustentabilidade";
+descricao = "Você é um exemplo de consciência ambiental!";
+dica = "Continue sendo referência e inspire outras pessoas.";
+}
+
+// resultado final
+r.innerHTML = `
+<h3>Resultado</h3>
+<p>Você acertou ${pontos} de 10 perguntas.</p>
+
+<br>
+<h2>${personalidade}</h2>
+<p>${descricao}</p>
+
+<br>
+<p><strong>Dica:</strong> ${dica}</p>
+
+<br>
+<p style="font-style:italic; margin-top:10px;">
+🌱 Toda atitude conta para o planeta.
+</p>
+`;
+}
+
+// ==========================
+// GABARITO
+// ==========================
 function mostrarGabarito() {
 
 const g = document.getElementById("gabarito");
@@ -134,7 +216,7 @@ html += `
 <button class="btn-info" onclick="mostrarExplicacao(${i}, 'a')">💡</button>
 
 <div id="explicacao-${i}-a" style="display:none">
-${item.explicacaoAluno}
+<strong>Explicação:</strong><br>${item.explicacaoAluno}
 </div>
 `;
 
@@ -145,33 +227,38 @@ html += `
 <button class="btn-info" onclick="mostrarExplicacao(${i}, 'a')">💡</button>
 
 <br><br>
+
 ✔ ${item.respostaCorreta}
 <button class="btn-info" onclick="mostrarExplicacao(${i}, 'c')">💡</button>
+
+<br><br>
 
 <div id="explicacao-${i}-a" style="display:none">
 <strong>Sua resposta:</strong><br>${item.explicacaoAluno}
 </div>
 
 <div id="explicacao-${i}-c" style="display:none">
-<strong>Correta:</strong><br>${item.explicacaoCorreta}
+<strong>Resposta correta:</strong><br>${item.explicacaoCorreta}
 </div>
 `;
-
 }
 
 html += `<hr></div>`;
-
 });
 
 g.innerHTML = html;
-
 }
 
+// ==========================
+// MOSTRAR EXPLICAÇÃO
+// ==========================
 window.mostrarExplicacao = function (i, t) {
 
 const d = document.getElementById(`explicacao-${i}-${t}`);
 
-d.style.display = d.style.display === "block" ? "none" : "block";
+d.style.display = d.style.display === "block"
+? "none"
+: "block";
 
 };
 
