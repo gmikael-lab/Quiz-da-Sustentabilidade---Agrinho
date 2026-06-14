@@ -1,209 +1,178 @@
+document.addEventListener("DOMContentLoaded", () => {
+
 let pontos = 0;
+let bloqueado = false;
+let respostasUsuario = [];
 
 const progresso = document.getElementById("progresso");
 
 embaralharAlternativas();
 
-const respostas = document.querySelectorAll(".resposta");
+document.querySelectorAll(".resposta, .btn-proximo").forEach(botao => {
 
-respostas.forEach(botao => {
+botao.addEventListener("click", function () {
 
-    botao.addEventListener("click", function(){
+const atual = document.querySelector(".ativo");
+const proximo = "passo-" + this.dataset.proximo;
 
-        if(this.dataset.correta === "true"){
+if (!document.getElementById(proximo)) return;
 
-            pontos++;
+if (this.classList.contains("resposta")) {
 
-        }
+if (bloqueado) return;
+bloqueado = true;
 
-        const atual = document.querySelector(".ativo");
+const pergunta = document.querySelector(".ativo h2").innerText;
+const resposta = this.innerText;
+const correta = this.dataset.correta === "true";
+const explicacaoAluno = this.dataset.explicacao;
 
-        const proximo = "passo-" + this.dataset.proximo;
+const botoes = document.querySelectorAll(".ativo .resposta");
 
-        atual.classList.remove("ativo");
+let respostaCorreta = "";
+let explicacaoCorreta = "";
 
-        document.getElementById(proximo).classList.add("ativo");
+botoes.forEach(btn => {
+if (btn.dataset.correta === "true") {
+respostaCorreta = btn.innerText;
+explicacaoCorreta = btn.dataset.explicacao;
+}
+});
 
-        atualizarProgresso(proximo);
+respostasUsuario.push({
+pergunta,
+resposta,
+correta,
+respostaCorreta,
+explicacaoAluno,
+explicacaoCorreta
+});
 
-        if(proximo === "passo-11"){
+if (correta) pontos++;
 
-            mostrarResultado();
+setTimeout(() => bloqueado = false, 300);
+}
 
-        }
+atual.classList.remove("ativo");
+document.getElementById(proximo).classList.add("ativo");
 
-    });
+atualizarProgresso(proximo);
+
+if (proximo === "passo-11") mostrarResultado();
 
 });
 
-document.querySelectorAll(".btn-proximo").forEach(botao=>{
+});
 
-    if(botao.classList.contains("resposta")) return;
+document.querySelector("#btn-gabarito").addEventListener("click", () => {
 
-    botao.addEventListener("click",function(){
+const g = document.getElementById("gabarito");
 
-        const atual=document.querySelector(".ativo");
+if (g.style.display === "block") {
+g.style.display = "none";
+return;
+}
 
-        const proximo="passo-"+this.dataset.proximo;
-
-        atual.classList.remove("ativo");
-
-        document.getElementById(proximo).classList.add("ativo");
-
-        atualizarProgresso(proximo);
-
-    });
+mostrarGabarito();
+g.style.display = "block";
 
 });
 
-function atualizarProgresso(id){
+function atualizarProgresso(id) {
 
-    const numero = Number(id.replace("passo-",""));
+const n = parseInt(id.split("-")[1]);
 
-    if(numero >= 1 && numero <= 10){
-
-        progresso.innerHTML = "Pergunta " + numero + " de 10";
-
-    }
-
-    else{
-
-        progresso.innerHTML = "";
-
-    }
+progresso.innerHTML = (n >= 1 && n <= 10)
+? "Pergunta " + n + " de 10"
+: "";
 
 }
 
-function embaralharAlternativas(){
+function embaralharAlternativas() {
 
-    document.querySelectorAll(".alternativas").forEach(container=>{
+document.querySelectorAll(".alternativas").forEach(c => {
 
-        const botoes = Array.from(container.children);
+const b = Array.from(c.children);
 
-        botoes.sort(()=>Math.random()-0.5);
+for (let i = b.length - 1; i > 0; i--) {
+const j = Math.floor(Math.random() * (i + 1));
+[b[i], b[j]] = [b[j], b[i]];
+}
 
-        botoes.forEach(botao=>container.appendChild(botao));
+b.forEach(x => c.appendChild(x));
 
-    });
+});
 
 }
 
-function mostrarResultado(){
+function mostrarResultado() {
 
-    const resultado = document.getElementById("resultado");
+const r = document.getElementById("resultado");
 
-    let texto = "";
-
-    if(pontos==10){
-
-        texto=`
-
-        <h3>🌎 Guardião da Natureza</h3>
-
-        <p>
-        Você conhece muito bem as práticas sustentáveis e
-        inspira outras pessoas a cuidar do planeta.
-        </p>
-
-        <h4>Parabéns!</h4>
-
-        <p>
-        Continue sendo um exemplo de consciência ambiental.
-        </p>
-
-        `;
-
-    }
-
-    else if(pontos>=8){
-
-        texto=`
-
-        <h3>🌱 Defensor Ambiental</h3>
-
-        <p>
-        Você já possui ótimos conhecimentos sobre sustentabilidade.
-        </p>
-
-        <h4>Dica:</h4>
-
-        <p>
-        Continue incentivando reciclagem,
-        economia de água e preservação da natureza.
-        </p>
-
-        `;
-
-    }
-
-    else if(pontos>=6){
-
-        texto=`
-
-        <h3>♻️ Aprendiz Verde</h3>
-
-        <p>
-        Você está no caminho certo!
-        </p>
-
-        <h4>Dica:</h4>
-
-        <p>
-        Pesquise mais sobre energias renováveis,
-        agricultura sustentável e reciclagem.
-        </p>
-
-        `;
-
-    }
-
-    else if(pontos>=3){
-
-        texto=`
-
-        <h3>🌿 Explorador Sustentável</h3>
-
-        <p>
-        Você ainda está aprendendo sobre preservação ambiental.
-        </p>
-
-        <h4>Dica:</h4>
-
-        <p>
-        Economize água,
-        reduza o desperdício e descarte corretamente os resíduos.
-        </p>
-
-        `;
-
-    }
-
-    else{
-
-        texto=`
-
-        <h3>🌱 Semente do Futuro</h3>
-
-        <p>
-        Todo conhecimento começa pelo primeiro passo.
-        </p>
-
-        <h4>Dica:</h4>
-
-        <p>
-        Aprenda sobre reciclagem,
-        proteção dos rios,
-        conservação das florestas
-        e consumo consciente.
-        Pequenas atitudes mudam o mundo.
-        </p>
-
-        `;
-
-    }
-
-    texto += `<br><h2>Você acertou ${pontos} de 10 perguntas.</h2>`;
-
-    resultado.innerHTML = texto;
+r.innerHTML = `
+<h3>Resultado</h3>
+<p>Você acertou ${pontos} de 10 perguntas.</p>
+`;
 
 }
+
+function mostrarGabarito() {
+
+const g = document.getElementById("gabarito");
+
+let html = "<h2>📋 Gabarito</h2>";
+
+respostasUsuario.forEach((item, i) => {
+
+html += `<div>
+<strong>${i + 1}. ${item.pergunta}</strong><br><br>`;
+
+if (item.correta) {
+
+html += `
+✔ ${item.resposta}
+<button class="btn-info" onclick="mostrarExplicacao(${i}, 'a')">💡</button>
+
+<div id="explicacao-${i}-a" style="display:none">
+${item.explicacaoAluno}
+</div>
+`;
+
+} else {
+
+html += `
+❌ ${item.resposta}
+<button class="btn-info" onclick="mostrarExplicacao(${i}, 'a')">💡</button>
+
+<br><br>
+✔ ${item.respostaCorreta}
+<button class="btn-info" onclick="mostrarExplicacao(${i}, 'c')">💡</button>
+
+<div id="explicacao-${i}-a" style="display:none">
+<strong>Sua resposta:</strong><br>${item.explicacaoAluno}
+</div>
+
+<div id="explicacao-${i}-c" style="display:none">
+<strong>Correta:</strong><br>${item.explicacaoCorreta}
+</div>
+`;
+
+}
+
+html += `<hr></div>`;
+
+});
+
+g.innerHTML = html;
+
+}
+
+window.mostrarExplicacao = function (i, t) {
+
+const d = document.getElementById(`explicacao-${i}-${t}`);
+
+d.style.display = d.style.display === "block" ? "none" : "block";
+
+};
+
+});

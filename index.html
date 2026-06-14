@@ -2,320 +2,317 @@
 <html lang="pt-BR">
 
 <head>
-
     <meta charset="UTF-8">
-
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
     <title>Quiz da Sustentabilidade - Agrinho</title>
-
     <link rel="stylesheet" href="style.css">
-
 </head>
 
 <body>
 
 <main>
 
-<h1>🌱 Quiz da Sustentabilidade</h1>
+    <h1>🌱 Quiz da Sustentabilidade</h1>
 
-<p id="progresso">Pergunta 0 de 10</p>
+    <p id="progresso">Pergunta 0 de 10</p>
 
-<div class="passo ativo" id="passo-0">
+    <div class="passo ativo" id="passo-0">
 
-    <img src="capa.png" alt="Capa">
+        <img src="capa.png">
 
-    <h2>Bem-vindo!</h2>
+        <h2>Bem-vindo!</h2>
 
-    <p>
-        Descubra qual é sua personalidade sustentável respondendo
-        às perguntas abaixo.
-    </p>
+        <p>Descubra sua personalidade sustentável.</p>
 
-    <button class="btn-proximo" data-proximo="1">
-        Começar
-    </button>
+        <button class="btn-proximo" data-proximo="1">Começar</button>
 
-</div>
+    </div>
 
-<div class="passo" id="passo-1">
+    <!-- 1 -->
+    <div class="passo" id="passo-1">
+        <img src="agua.png">
+        <h2>Pergunta 1</h2>
+        <p>Qual atitude economiza água?</p>
 
-    <img src="agua.png" alt="Água">
+        <div class="alternativas">
 
-    <h2>Pergunta 1</h2>
+            <button class="resposta" data-correta="false" data-proximo="2"
+            data-explicacao="Errado: lavar calçada desperdiça muita água.">
+            Lavar calçada com mangueira
+            </button>
 
-    <p>Qual atitude economiza água?</p>
-
-    <div class="alternativas">
-
-        <button class="resposta" data-correta="false" data-proximo="2">
-            Lavar a calçada com mangueira
-        </button>
-
-        <button class="resposta" data-correta="true" data-proximo="2">
+            <button class="resposta" data-correta="true" data-proximo="2"
+            data-explicacao="Correto: fechar a torneira evita desperdício de água.">
             Fechar a torneira ao escovar os dentes
-        </button>
+            </button>
 
-        <button class="resposta" data-correta="false" data-proximo="2">
+            <button class="resposta" data-correta="false" data-proximo="2"
+            data-explicacao="Errado: vazamentos desperdiçam água potável continuamente.">
             Deixar vazamentos sem conserto
-        </button>
+            </button>
 
+        </div>
     </div>
 
-</div>
+    <!-- 2 -->
+    <div class="passo" id="passo-2">
+        <img src="reciclagem.png">
+        <h2>Pergunta 2</h2>
+        <p>O que significa reciclar?</p>
 
-<div class="passo" id="passo-2">
+        <div class="alternativas">
 
-    <img src="reciclagem.png" alt="Reciclagem">
-
-    <h2>Pergunta 2</h2>
-
-    <p>O que significa reciclar?</p>
-
-    <div class="alternativas">
-
-        <button class="resposta" data-correta="true" data-proximo="3">
+            <button class="resposta" data-correta="true" data-proximo="3"
+            data-explicacao="Correto: reciclar transforma resíduos em novos produtos.">
             Transformar resíduos em novos produtos
-        </button>
+            </button>
 
-        <button class="resposta" data-correta="false" data-proximo="3">
+            <button class="resposta" data-correta="false" data-proximo="3"
+            data-explicacao="Errado: queimar lixo polui o meio ambiente.">
             Queimar lixo
-        </button>
+            </button>
 
-        <button class="resposta" data-correta="false" data-proximo="3">
+            <button class="resposta" data-correta="false" data-proximo="3"
+            data-explicacao="Errado: jogar lixo no rio contamina a água.">
             Jogar lixo no rio
-        </button>
+            </button>
 
+        </div>
     </div>
 
-</div>
+    <!-- 3 -->
+    <div class="passo" id="passo-3">
+        <img src="energia.png">
+        <h2>Pergunta 3</h2>
+        <p>Qual é uma energia renovável?</p>
 
-<div class="passo" id="passo-3">
+        <div class="alternativas">
 
-    <img src="energia.png">
-
-    <h2>Pergunta 3</h2>
-
-    <p>Qual é uma energia renovável?</p>
-
-    <div class="alternativas">
-
-        <button class="resposta" data-correta="false" data-proximo="4">
+            <button class="resposta" data-correta="false" data-proximo="4"
+            data-explicacao="Errado: petróleo é um combustível fóssil.">
             Petróleo
-        </button>
+            </button>
 
-        <button class="resposta" data-correta="false" data-proximo="4">
-            Carvão Mineral
-        </button>
+            <button class="resposta" data-correta="false" data-proximo="4"
+            data-explicacao="Errado: carvão mineral polui o meio ambiente.">
+            Carvão mineral
+            </button>
 
-        <button class="resposta" data-correta="true" data-proximo="4">
-            Energia Solar
-        </button>
+            <button class="resposta" data-correta="true" data-proximo="4"
+            data-explicacao="Correto: energia solar é limpa e renovável.">
+            Energia solar
+            </button>
 
+        </div>
     </div>
 
-</div>
+    <!-- 4 -->
+    <div class="passo" id="passo-4">
+        <img src="agricultura.png">
+        <h2>Pergunta 4</h2>
+        <p>O que é agricultura sustentável?</p>
 
-<div class="passo" id="passo-4">
+        <div class="alternativas">
 
-    <img src="agricultura.png">
-
-    <h2>Pergunta 4</h2>
-
-    <p>O que é agricultura sustentável?</p>
-
-    <div class="alternativas">
-
-        <button class="resposta" data-correta="false" data-proximo="5">
+            <button class="resposta" data-correta="false" data-proximo="5"
+            data-explicacao="Errado: desmatar prejudica o meio ambiente.">
             Desmatar para produzir
-        </button>
+            </button>
 
-        <button class="resposta" data-correta="true" data-proximo="5">
+            <button class="resposta" data-correta="true" data-proximo="5"
+            data-explicacao="Correto: respeita o meio ambiente na produção.">
             Produzir respeitando o meio ambiente
-        </button>
+            </button>
 
-        <button class="resposta" data-correta="false" data-proximo="5">
+            <button class="resposta" data-correta="false" data-proximo="5"
+            data-explicacao="Errado: uso descontrolado de recursos causa danos ambientais.">
             Gastar recursos sem controle
-        </button>
+            </button>
 
+        </div>
     </div>
 
-</div>
+    <!-- 5 -->
+    <div class="passo" id="passo-5">
+        <img src="rios.png">
+        <h2>Pergunta 5</h2>
+        <p>Por que devemos preservar os rios?</p>
 
-<div class="passo" id="passo-5">
+        <div class="alternativas">
 
-    <img src="rios.png">
-
-    <h2>Pergunta 5</h2>
-
-    <p>Por que devemos preservar os rios?</p>
-
-    <div class="alternativas">
-
-        <button class="resposta" data-correta="true" data-proximo="6">
+            <button class="resposta" data-correta="true" data-proximo="6"
+            data-explicacao="Correto: rios fornecem água e sustentam a vida.">
             Porque fornecem água e vida
-        </button>
+            </button>
 
-        <button class="resposta" data-correta="false" data-proximo="6">
+            <button class="resposta" data-correta="false" data-proximo="6"
+            data-explicacao="Errado: rios são essenciais para o ecossistema.">
             Não possuem importância
-        </button>
+            </button>
 
-        <button class="resposta" data-correta="false" data-proximo="6">
+            <button class="resposta" data-correta="false" data-proximo="6"
+            data-explicacao="Errado: rios são fundamentais para a sobrevivência.">
             Apenas ocupam espaço
-        </button>
+            </button>
 
+        </div>
     </div>
 
-</div>
+    <!-- 6 -->
+    <div class="passo" id="passo-6">
+        <img src="lixo.png">
+        <h2>Pergunta 6</h2>
 
-<div class="passo" id="passo-6">
+        <p>Onde deve ser descartado o lixo eletrônico?</p>
 
-    <img src="lixo.png">
+        <div class="alternativas">
 
-    <h2>Pergunta 6</h2>
-
-    <p>Onde deve ser descartado o lixo eletrônico?</p>
-
-    <div class="alternativas">
-
-        <button class="resposta" data-correta="false" data-proximo="7">
+            <button class="resposta" data-correta="false" data-proximo="7"
+            data-explicacao="Errado: polui rios e o solo.">
             No rio
-        </button>
+            </button>
 
-        <button class="resposta" data-correta="true" data-proximo="7">
+            <button class="resposta" data-correta="true" data-proximo="7"
+            data-explicacao="Correto: deve ser levado a pontos de coleta.">
             Em pontos de coleta
-        </button>
+            </button>
 
-        <button class="resposta" data-correta="false" data-proximo="7">
-            Em terrenos vazios
-        </button>
+            <button class="resposta" data-correta="false" data-proximo="7"
+            data-explicacao="Errado: contamina o solo.">
+            Terrenos vazios
+            </button>
 
+        </div>
     </div>
 
-</div>
+    <!-- 7 -->
+    <div class="passo" id="passo-7">
+        <img src="poluicao.png">
+        <h2>Pergunta 7</h2>
 
-<div class="passo" id="passo-7">
+        <p>O que ajuda a reduzir a poluição?</p>
 
-    <img src="poluicao.png">
+        <div class="alternativas">
 
-    <h2>Pergunta 7</h2>
+            <button class="resposta" data-correta="true" data-proximo="8"
+            data-explicacao="Correto: transporte coletivo reduz emissão de gases.">
+            Transporte coletivo
+            </button>
 
-    <p>O que ajuda a reduzir a poluição?</p>
-
-    <div class="alternativas">
-
-        <button class="resposta" data-correta="true" data-proximo="8">
-            Utilizar transporte coletivo
-        </button>
-
-        <button class="resposta" data-correta="false" data-proximo="8">
+            <button class="resposta" data-correta="false" data-proximo="8"
+            data-explicacao="Errado: queimar lixo polui o ar.">
             Queimar lixo
-        </button>
+            </button>
 
-        <button class="resposta" data-correta="false" data-proximo="8">
-            Jogar resíduos nas ruas
-        </button>
+            <button class="resposta" data-correta="false" data-proximo="8"
+            data-explicacao="Errado: aumenta a poluição urbana.">
+            Jogar lixo na rua
+            </button>
 
+        </div>
     </div>
 
-</div>
+    <!-- 8 -->
+    <div class="passo" id="passo-8">
+        <img src="solo.png">
+        <h2>Pergunta 8</h2>
 
-<div class="passo" id="passo-8">
+        <p>Como proteger o solo?</p>
 
-    <img src="solo.png">
+        <div class="alternativas">
 
-    <h2>Pergunta 8</h2>
+            <button class="resposta" data-correta="true" data-proximo="9"
+            data-explicacao="Correto: evita desgaste do solo.">
+            Evitando erosão
+            </button>
 
-    <p>Como proteger o solo?</p>
-
-    <div class="alternativas">
-
-        <button class="resposta" data-correta="true" data-proximo="9">
-            Evitando erosão e desmatamento
-        </button>
-
-        <button class="resposta" data-correta="false" data-proximo="9">
+            <button class="resposta" data-correta="false" data-proximo="9"
+            data-explicacao="Errado: prejudica o solo.">
             Jogando lixo
-        </button>
+            </button>
 
-        <button class="resposta" data-correta="false" data-proximo="9">
-            Retirando toda vegetação
-        </button>
+            <button class="resposta" data-correta="false" data-proximo="9"
+            data-explicacao="Errado: destrói o ecossistema.">
+            Desmatando tudo
+            </button>
 
+        </div>
     </div>
 
-</div>
+    <!-- 9 -->
+    <div class="passo" id="passo-9">
+        <img src="arvores.png">
+        <h2>Pergunta 9</h2>
 
-<div class="passo" id="passo-9">
+        <p>Qual é a importância das árvores?</p>
 
-    <img src="arvores.png">
+        <div class="alternativas">
 
-    <h2>Pergunta 9</h2>
+            <button class="resposta" data-correta="false" data-proximo="10"
+            data-explicacao="Errado: árvores fazem muito mais que sombra.">
+            Só fazem sombra
+            </button>
 
-    <p>Qual a importância das árvores?</p>
+            <button class="resposta" data-correta="false" data-proximo="10"
+            data-explicacao="Errado: árvores são essenciais para o planeta.">
+            Não têm função
+            </button>
 
-    <div class="alternativas">
-
-        <button class="resposta" data-correta="false" data-proximo="10">
-            Apenas fazem sombra
-        </button>
-
-        <button class="resposta" data-correta="false" data-proximo="10">
-            Não possuem função
-        </button>
-
-        <button class="resposta" data-correta="true" data-proximo="10">
+            <button class="resposta" data-correta="true" data-proximo="10"
+            data-explicacao="Correto: produzem oxigênio e equilibram o clima.">
             Produzem oxigênio
-        </button>
+            </button>
 
+        </div>
     </div>
 
-</div>
+    <!-- 10 -->
+    <div class="passo" id="passo-10">
+        <img src="campo-cidade.png">
+        <h2>Pergunta 10</h2>
 
-<div class="passo" id="passo-10">
+        <p>Qual é a relação entre o campo e a cidade?</p>
 
-    <img src="campo-cidade.png">
+        <div class="alternativas">
 
-    <h2>Pergunta 10</h2>
-
-    <p>Qual a relação entre campo e cidade?</p>
-
-    <div class="alternativas">
-
-        <button class="resposta" data-correta="true" data-proximo="11">
+            <button class="resposta" data-correta="true" data-proximo="11"
+            data-explicacao="Correto: o campo fornece alimentos para a cidade.">
             O campo produz alimentos para a cidade
-        </button>
+            </button>
 
-        <button class="resposta" data-correta="false" data-proximo="11">
-            Não possuem relação
-        </button>
+            <button class="resposta" data-correta="false" data-proximo="11"
+            data-explicacao="Errado: existe uma forte dependência entre eles.">
+            Não existe relação
+            </button>
 
-        <button class="resposta" data-correta="false" data-proximo="11">
+            <button class="resposta" data-correta="false" data-proximo="11"
+            data-explicacao="Errado: campo e cidade são interdependentes.">
             São independentes
-        </button>
+            </button>
 
+        </div>
     </div>
 
-</div>
+    <!-- resultado -->
+    <div class="passo" id="passo-11">
 
-<div class="passo" id="passo-11">
+        <img src="resultado.png">
 
-    <img src="resultado.png">
+        <h2>Resultado</h2>
 
-    <h2>Seu Resultado</h2>
+        <div id="resultado"></div>
 
-    <div id="resultado"></div>
+        <button onclick="location.reload()">Jogar novamente</button>
 
-    <button onclick="location.reload()">
-        Jogar Novamente
-    </button>
+        <button id="btn-gabarito">📜 Gabarito</button>
 
-</div>
+        <div id="gabarito"></div>
+
+    </div>
 
 </main>
 
 <script src="script.js"></script>
 
 </body>
-
 </html>
