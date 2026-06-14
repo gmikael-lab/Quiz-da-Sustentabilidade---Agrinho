@@ -1,19 +1,36 @@
-🌱 Quiz da Sustentabilidade - Agrinho
-📖 Sobre o projeto
+# 🌱 Quiz da Sustentabilidade
 
-O Quiz da Sustentabilidade é uma aplicação web desenvolvida com HTML, CSS e JavaScript, criada para conscientizar os usuários sobre a importância da preservação ambiental e da sustentabilidade.
+## 📖 Sobre o projeto
 
-O projeto apresenta perguntas interativas sobre temas como:
+O **Quiz da Sustentabilidade** é um site interativo desenvolvido com **HTML, CSS e JavaScript**, criado para incentivar a conscientização ambiental por meio de perguntas e respostas.
 
-- Economia de água;
-- Reciclagem;
-- Energias renováveis;
-- Agricultura sustentável;
-- Preservação dos rios;
-- Descarte correto de resíduos;
-- Poluição;
-- Conservação do solo;
-- Importância das árvores;
-- Relação entre campo e cidade.
+O usuário responde **10 perguntas** sobre sustentabilidade e, ao final, recebe uma **personalidade sustentável** baseada em sua pontuação, além de dicas para contribuir com a preservação do meio ambiente.
 
-Ao final do quiz, o usuário recebe sua pontuação e uma mensagem de acordo com seu desempenho.
+---
+
+## 🎯 Objetivo
+
+Promover a educação ambiental de forma dinâmica, mostrando a importância de pequenas atitudes que ajudam a preservar o planeta.
+
+---
+
+## 💻 Tecnologias utilizadas
+
+- HTML5
+- CSS3
+- JavaScript
+
+---
+
+## 📚 Conteúdos abordados
+
+- Economia de água
+- Reciclagem
+- Energias renováveis
+- Agricultura sustentável
+- Preservação dos rios
+- Descarte correto do lixo eletrônico
+- Poluição
+- Conservação do solo
+- Importância das árvores
+- Relação entre campo e cidade
