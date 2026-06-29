@@ -17,9 +17,6 @@ const proximo = "passo-" + this.dataset.proximo;
 
 if (!document.getElementById(proximo)) return;
 
-// ==========================
-// RESPOSTA
-// ==========================
 if (this.classList.contains("resposta")) {
 
 if (bloqueado) return;
@@ -33,7 +30,6 @@ const explicacaoAluno = this.dataset.explicacao;
 let respostaCorreta = "";
 let explicacaoCorreta = "";
 
-// pega resposta correta do bloco atual
 document.querySelectorAll(".ativo .resposta").forEach(btn => {
 if (btn.dataset.correta === "true") {
 respostaCorreta = btn.innerText;
@@ -55,13 +51,11 @@ if (correta) pontos++;
 setTimeout(() => bloqueado = false, 300);
 }
 
-// troca de passo
 atual.classList.remove("ativo");
 document.getElementById(proximo).classList.add("ativo");
 
 atualizarProgresso(proximo);
 
-// quando chega no resultado
 if (proximo === "passo-11") {
 mostrarResultado();
 }
@@ -70,9 +64,6 @@ mostrarResultado();
 
 });
 
-// ==========================
-// GABARITO BOTÃO
-// ==========================
 document.querySelector("#btn-gabarito").addEventListener("click", () => {
 
 const g = document.getElementById("gabarito");
@@ -87,9 +78,6 @@ g.style.display = "block";
 
 });
 
-// ==========================
-// PROGRESSO
-// ==========================
 function atualizarProgresso(id) {
 
 const n = parseInt(id.split("-")[1]);
@@ -101,9 +89,6 @@ progresso.innerHTML =
 
 }
 
-// ==========================
-// EMBARALHAR ALTERNATIVAS
-// ==========================
 function embaralharAlternativas() {
 
 document.querySelectorAll(".alternativas").forEach(c => {
@@ -121,9 +106,6 @@ b.forEach(x => c.appendChild(x));
 
 }
 
-// ==========================
-// RESULTADO + PERSONALIDADES
-// ==========================
 function mostrarResultado() {
 
 const r = document.getElementById("resultado");
@@ -132,7 +114,6 @@ let personalidade = "";
 let descricao = "";
 let dica = "";
 
-// 🪴 0-2
 if (pontos <= 2) {
 
 personalidade = "🪴 Despertando Ambientalmente";
@@ -141,7 +122,6 @@ dica = "Comece com pequenas atitudes como economizar água e separar o lixo.";
 
 }
 
-// 🌿 3-4
 else if (pontos <= 4) {
 
 personalidade = "🌿 Aprendiz Sustentável";
@@ -150,7 +130,6 @@ dica = "Transforme o que você sabe em hábitos do dia a dia.";
 
 }
 
-// 🌳 5-6
 else if (pontos <= 6) {
 
 personalidade = "🌳 Guardião em Formação";
@@ -159,7 +138,6 @@ dica = "Incentive outras pessoas a praticarem sustentabilidade.";
 
 }
 
-// 🌎 7-8
 else if (pontos <= 8) {
 
 personalidade = "🌎 Protetor da Natureza";
@@ -168,7 +146,6 @@ dica = "Busque ampliar ainda mais seu impacto positivo.";
 
 }
 
-// 🏆 9-10
 else {
 
 personalidade = "🏆 Mestre da Sustentabilidade";
@@ -176,7 +153,6 @@ descricao = "Você é um exemplo de consciência ambiental!";
 dica = "Continue sendo referência e inspire outras pessoas.";
 }
 
-// resultado final
 r.innerHTML = `
 <h3>Resultado</h3>
 <p>Você acertou ${pontos} de 10 perguntas.</p>
@@ -195,9 +171,6 @@ r.innerHTML = `
 `;
 }
 
-// ==========================
-// GABARITO
-// ==========================
 function mostrarGabarito() {
 
 const g = document.getElementById("gabarito");
@@ -249,9 +222,6 @@ html += `<hr></div>`;
 g.innerHTML = html;
 }
 
-// ==========================
-// MOSTRAR EXPLICAÇÃO
-// ==========================
 window.mostrarExplicacao = function (i, t) {
 
 const d = document.getElementById(`explicacao-${i}-${t}`);
